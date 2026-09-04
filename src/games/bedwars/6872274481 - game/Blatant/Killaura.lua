@@ -334,6 +334,19 @@ run(function()
 		DefaultOpacity = 0.5,
 		Visible = false
 	})
+
+	local rate = 128
+				
+	particleRate = Killaura:CreateSlider({
+		Name = "Particle Rate",
+		Max = 250
+		Min = 0
+		Function = function(val)
+		 	rate = tonumber(val) or 128
+		end),
+		Tooltip = "[NEW] Change the rate of the particles (how much of them spawn)"
+	})
+				
 	Killaura:CreateToggle({
 		Name = 'Target particles',
 		Function = function(callback)
@@ -358,7 +371,7 @@ run(function()
 					particles.Transparency = NumberSequence.new(0)
 					particles.Lifetime = NumberRange.new(0.4)
 					particles.Speed = NumberRange.new(16)
-					particles.Rate = 128
+					particles.Rate = tonumber(rate)
 					particles.Drag = 16
 					particles.ShapePartial = 1
 					particles.Color = ColorSequence.new({
