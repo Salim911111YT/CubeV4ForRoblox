@@ -10,7 +10,9 @@ EntityESP = vape.Categories.Blatant:CreateModule({
 		 notif("Entity Detected", ent.Name.." has spawned.")
 	     end)
 	 end)
-      end
+		else
+			if connection then connection:Disconnect() end
+		end
   end,
   Tooltip = "Notifies you of entities that appear."
 })
